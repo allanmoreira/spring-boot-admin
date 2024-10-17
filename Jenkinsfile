@@ -8,7 +8,7 @@ pipeline {
         ARTIFACT_NAME = ""
         JAR_NAME = ""
         BUILD_PATH = '/home/usr_pub/builds'
-        DOCKERFILE_PATH = "${BUILD_PATH}/Dockerfile-JDK8"
+        DOCKERFILE_PATH = "Dockerfile"
         CONTEXT_BUILD = "${BUILD_PATH}"
         PATH_ARTIFACT = ""
     }
