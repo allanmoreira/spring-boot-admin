@@ -15,7 +15,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <start-class>br.com.moreirallan.planilhafinanceira.ms.MainApplication</start-class>
+    <start-class>br.com.moreirallan.springbootadmin.SpringBootAdminApplication</start-class>
   </properties>
   <dependencies>
     <dependency>
