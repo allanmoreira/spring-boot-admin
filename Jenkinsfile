@@ -7,7 +7,7 @@ pipeline {
         ARTIFACT_ID = ""
         ARTIFACT_NAME = ""
         JAR_NAME = ""
-        BUILD_PATH = '/home/usr_pub/builds'
+        BUILD_PATH = '/home/jenkins/builds'
         DOCKERFILE_PATH = "Dockerfile"
         CONTEXT_BUILD = "${BUILD_PATH}"
         PATH_ARTIFACT = ""
