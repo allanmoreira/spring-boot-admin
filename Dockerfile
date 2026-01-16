@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM amazoncorretto:8
 ARG JAR_FILE
 COPY ${JAR_FILE} /app.jar
 ENTRYPOINT ["java","-jar","app.jar", "--spring.profiles.active=prod"]
