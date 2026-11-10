@@ -11,6 +11,7 @@ pipeline {
         DOCKERFILE_PATH = "Dockerfile"
         CONTEXT_BUILD = "${BUILD_PATH}"
         PATH_ARTIFACT = ""
+        SPRING_BOOT_ADMIN_UI_PUBLIC_URL = "http://moreirallan.com/spring-boot-admin"
     }
     stages {
         stage ('Build') {
@@ -95,7 +96,13 @@ pipeline {
 
                     sh "docker build -t ${DOCKER_IMAGE} -f ${DOCKERFILE_PATH} ${CONTEXT_BUILD} --build-arg JAR_FILE=${ARTIFACT_ID}/${JAR_NAME}"
 
-                    sh "docker run --rm --network=host -d --name ${DOCKER_CONTAINER} ${DOCKER_IMAGE} -e SERVER_FORWARD_HEADERS_STRATEGY=framework"
+                    sh "docker run --rm --network=host -d --name ${DOCKER_CONTAINER} ${DOCKER_IMAGE}"
+
+                    sh "run --rm --network=host -d \
+                          --name spring-boot-admin-container \
+                          -e SERVER_FORWARD_HEADERS_STRATEGY=framework \
+                          -e SPRING_BOOT_ADMIN_UI_PUBLIC_URL=${SPRING_BOOT_ADMIN_UI_PUBLIC_URL}/ \
+                          ${DOCKER_IMAGE}"
                 }
             }
         }
