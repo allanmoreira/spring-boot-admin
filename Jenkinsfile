@@ -97,7 +97,8 @@ pipeline {
                     sh "docker build -t ${DOCKER_IMAGE} -f ${DOCKERFILE_PATH} ${CONTEXT_BUILD} --build-arg JAR_FILE=${ARTIFACT_ID}/${JAR_NAME}"
 
                     sh "docker run --rm --network=host -d \
-                          --name spring-boot-admin-container \
+                          --name ${DOCKER_CONTAINER} \
+                          --e SERVER_ADDRESS=127.0.0.1 \
                           -e SERVER_FORWARD_HEADERS_STRATEGY=framework \
                           -e SPRING_BOOT_ADMIN_UI_PUBLIC_URL=${SPRING_BOOT_ADMIN_UI_PUBLIC_URL}/ \
                           ${DOCKER_IMAGE}"
