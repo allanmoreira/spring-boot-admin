@@ -98,7 +98,7 @@ pipeline {
 
                     sh "docker run --rm --network=host -d \
                           --name ${DOCKER_CONTAINER} \
-                          --e SERVER_ADDRESS=127.0.0.1 \
+                          -e SERVER_ADDRESS=127.0.0.1 \
                           -e SERVER_FORWARD_HEADERS_STRATEGY=framework \
                           -e SPRING_BOOT_ADMIN_UI_PUBLIC_URL=${SPRING_BOOT_ADMIN_UI_PUBLIC_URL}/ \
                           ${DOCKER_IMAGE}"
