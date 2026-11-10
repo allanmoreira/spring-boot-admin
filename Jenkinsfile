@@ -95,7 +95,7 @@ pipeline {
 
                     sh "docker build -t ${DOCKER_IMAGE} -f ${DOCKERFILE_PATH} ${CONTEXT_BUILD} --build-arg JAR_FILE=${ARTIFACT_ID}/${JAR_NAME}"
 
-                    sh "docker run --rm --network=host -d --name ${DOCKER_CONTAINER} ${DOCKER_IMAGE}"
+                    sh "docker run --rm --network=host -d --name ${DOCKER_CONTAINER} ${DOCKER_IMAGE} -e SERVER_FORWARD_HEADERS_STRATEGY=framework"
                 }
             }
         }
