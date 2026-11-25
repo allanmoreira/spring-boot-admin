@@ -77,15 +77,18 @@ pipeline {
                     POM_XML_VERSION = "${pom.version}"
                     echo "Incremented POM project version to ${POM_XML_VERSION}"
 
-                    sh "git tag -a '${POM_XML_VERSION}' -m \"tag ${POM_XML_VERSION} gerada\""
-
-                    sh "git push origin '${pom.version}'"
-
                     sh "git add ${POM_XML_FILE}"
 
                     sh 'git commit -m "POM version increased"'
 
-                    sh "git push origin ${BRANCH_DEFAULT}"
+                    // Tag criada após o commit, para apontar para o pom com a nova versão
+                    sh "git tag -a '${POM_XML_VERSION}' -m \"tag ${POM_XML_VERSION} gerada\""
+
+                    // O Jenkins faz checkout em detached HEAD: é preciso enviar o HEAD atual
+                    // para a branch remota, e não a branch local (desatualizada)
+                    sh "git push origin HEAD:${BRANCH_DEFAULT}"
+
+                    sh "git push origin '${POM_XML_VERSION}'"
                 }
             }
         }
