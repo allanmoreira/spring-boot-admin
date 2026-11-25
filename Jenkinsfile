@@ -7,9 +7,9 @@ pipeline {
         ARTIFACT_ID = ""
         ARTIFACT_NAME = ""
         JAR_NAME = ""
-        BUILD_PATH = '/home/jenkins/builds'
+        BUILD_PATH      = "/home/usr_pub/builds"
         DOCKERFILE_PATH = "Dockerfile"
-        CONTEXT_BUILD = "${BUILD_PATH}"
+        CONTEXT_BUILD   = "${BUILD_PATH}"
         PATH_ARTIFACT = ""
         SPRING_BOOT_ADMIN_UI_PUBLIC_URL = "http://moreirallan.com/spring-boot-admin"
     }
