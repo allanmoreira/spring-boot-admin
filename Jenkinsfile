@@ -54,6 +54,10 @@ pipeline {
                 script {
                     sh "git checkout -b ${BRANCH_DEFAULT} remotes/origin/${BRANCH_DEFAULT}"
 
+                    // Identidade do autor dos commits (o container do Jenkins não tem uma configurada)
+                    sh 'git config user.name "Jenkins"'
+                    sh 'git config user.email "jenkins@localhost"'
+
                     sh "git config remote.origin.url https://'${GITHUB_CREDENTIALS_USR}:${GITHUB_CREDENTIALS_PSW}'@github.com/${GITHUB_CREDENTIALS_USR}/${ARTIFACT_ID}.git"
 
                     echo 'Read pom file'
