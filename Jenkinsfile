@@ -52,7 +52,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh "git checkout -b ${BRANCH_DEFAULT} remotes/origin/${BRANCH_DEFAULT}"
+                    // sh "git checkout -b ${BRANCH_DEFAULT} remotes/origin/${BRANCH_DEFAULT}"
 
                     // Identidade do autor dos commits (o container do Jenkins não tem uma configurada)
                     sh 'git config user.name "Jenkins"'
