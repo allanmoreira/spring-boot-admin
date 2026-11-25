@@ -85,7 +85,7 @@ pipeline {
 
                     sh 'git commit -m "POM version increased"'
 
-                    sh "git push origin ${BRANCH_DEFAULT})"
+                    sh "git push origin ${BRANCH_DEFAULT}"
                 }
             }
         }
