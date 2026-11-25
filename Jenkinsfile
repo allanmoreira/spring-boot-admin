@@ -36,9 +36,9 @@ pipeline {
                     echo "Run maven package to ${POM_XML_VERSION}"
                     sh 'mvn clean package -Dmaven.test.skip=true'
 
-                    sh 'mkdir /home/jenkins/builds  || true'
+                    sh "mkdir ${BUILD_PATH}  || true"
 
-                    sh "mkdir /home/jenkins/builds/${ARTIFACT_ID}  || true"
+                    sh "mkdir ${BUILD_PATH}/${ARTIFACT_ID}  || true"
 
                     echo "Copy ${ARTIFACT_NAME} to ${BUILD_PATH}"
                     sh "cp target/${JAR_NAME} ${BUILD_PATH}/${ARTIFACT_ID}"
