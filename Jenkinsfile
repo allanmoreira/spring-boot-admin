@@ -11,7 +11,8 @@ pipeline {
         DOCKERFILE_PATH = "Dockerfile"
         CONTEXT_BUILD   = "${BUILD_PATH}"
         PATH_ARTIFACT = ""
-        SPRING_BOOT_ADMIN_UI_PUBLIC_URL = "http://moreirallan.com/spring-boot-admin"
+        CONTEXT_PATH = "/spring-boot-admin"
+        SPRING_BOOT_ADMIN_UI_PUBLIC_URL = "https://moreirallan.com/spring-boot-admin"
     }
     stages {
         stage ('Build') {
@@ -114,7 +115,8 @@ pipeline {
                     sh "docker run --rm -d \
                           --name ${DOCKER_CONTAINER} \
                           -p 127.0.0.1:8081:8081 \
-                          -e SERVER_FORWARD_HEADERS_STRATEGY=framework \
+                          -e SERVER_SERVLET_CONTEXT_PATH=${CONTEXT_PATH} \
+                          -e SERVER_USE_FORWARD_HEADERS=true \
                           -e SPRING_BOOT_ADMIN_UI_PUBLIC_URL=${SPRING_BOOT_ADMIN_UI_PUBLIC_URL}/ \
                           ${DOCKER_IMAGE}"
                 }
