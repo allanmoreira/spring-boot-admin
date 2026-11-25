@@ -112,7 +112,7 @@ pipeline {
 
                     sh "docker build -t ${DOCKER_IMAGE} -f ${DOCKERFILE_PATH} ${CONTEXT_BUILD} --build-arg JAR_FILE=${ARTIFACT_ID}/${JAR_NAME}"
 
-                    sh "docker run --rm -d \
+                    sh "docker run -d \
                           --name ${DOCKER_CONTAINER} \
                           --restart unless-stopped \
                           -p 127.0.0.1:8081:8081 \
