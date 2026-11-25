@@ -114,6 +114,7 @@ pipeline {
 
                     sh "docker run --rm -d \
                           --name ${DOCKER_CONTAINER} \
+                          --restart unless-stopped \
                           -p 127.0.0.1:8081:8081 \
                           -e SERVER_SERVLET_CONTEXT_PATH=${CONTEXT_PATH} \
                           -e SERVER_USE_FORWARD_HEADERS=true \
