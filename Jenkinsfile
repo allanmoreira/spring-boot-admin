@@ -15,7 +15,13 @@ pipeline {
     }
     stages {
         stage ('Build') {
-            agent any
+            agent {
+                docker {
+                    image 'maven:3.9-eclipse-temurin-21'
+                    args '-v /home/usr_pub/jenkins-data/jenkins_home/.m2:/var/maven/.m2 -e MAVEN_CONFIG=/var/maven/.m2'
+                    reuseNode true
+                }
+            }
             steps {
                 script {
                     echo 'Read pom file'
