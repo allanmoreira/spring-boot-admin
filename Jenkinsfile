@@ -13,7 +13,7 @@ pipeline {
         PATH_ARTIFACT = ""
         CONTEXT_PATH = "/admin"
         SPRING_BOOT_ADMIN_UI_PUBLIC_URL = "https://moreirallan.com"
-        REDE   = 'rede-interna-docker'
+        REDE   = "rede-interna-docker"
         PORTA = 8081
     }
     stages {
@@ -106,7 +106,7 @@ pipeline {
                     DOCKER_IMAGE = "${ARTIFACT_ID}-image"
                     DOCKER_CONTAINER = "${ARTIFACT_ID}-container"
 
-                    sh "docker network inspect "${REDE}" >/dev/null 2>&1 || docker network create "${REDE}""
+                    sh "docker network inspect \"${REDE}\" >/dev/null 2>&1 || docker network create \"${REDE}\""
 
                     sh "docker stop ${DOCKER_CONTAINER} || true"
 
@@ -119,7 +119,7 @@ pipeline {
                     sh "docker run -d \
                           --name ${DOCKER_CONTAINER} \
                           --restart unless-stopped \
-                          --network "${REDE}" \
+                          --network \"${REDE}\" \
                           -p 127.0.0.1:${PORTA}:${PORTA} \
                           -e SERVER_FORWARD_HEADERS_STRATEGY=native \
                           -e SERVER_SERVLET_CONTEXT_PATH=${CONTEXT_PATH} \
