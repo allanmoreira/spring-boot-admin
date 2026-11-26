@@ -123,7 +123,6 @@ pipeline {
                           -p 127.0.0.1:${PORTA}:${PORTA} \
                           -e SERVER_FORWARD_HEADERS_STRATEGY=native \
                           -e SERVER_SERVLET_CONTEXT_PATH=${CONTEXT_PATH} \
-                          -e SERVER_USE_FORWARD_HEADERS=true \
                           -e SPRING_BOOT_ADMIN_UI_PUBLIC_URL=${SPRING_BOOT_ADMIN_UI_PUBLIC_URL}/ \
                           ${DOCKER_IMAGE}"
                 }
