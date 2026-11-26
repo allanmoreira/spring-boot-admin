@@ -12,7 +12,7 @@ pipeline {
         CONTEXT_BUILD   = "${BUILD_PATH}"
         PATH_ARTIFACT = ""
         CONTEXT_PATH = "/spring-boot-admin"
-        SPRING_BOOT_ADMIN_UI_PUBLIC_URL = "https://moreirallan.com/spring-boot-admin"
+        SPRING_BOOT_ADMIN_UI_PUBLIC_URL = "https://moreirallan.com"
         REDE   = "rede-interna-docker"
         PORTA = 8081
     }
